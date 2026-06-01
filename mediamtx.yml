@@ -1,0 +1,60 @@
+
+
+# Global settings -> General
+
+logLevel: info
+logDestinations: [stdout]
+
+
+# -> RTSP server
+
+rtsp: yes
+
+rtspAddress: :8554
+rtspTransports: [tcp]
+
+
+# -> HLS server
+
+hls: yes
+
+hlsAddress: :8888
+# Tối ưu HLS cho độ trễ thấp
+hlsSegmentCount: 5
+hlsSegmentDuration: 1s
+
+
+# Global settings -> WebRTC server
+
+webrtc: yes
+webrtcAddress: :8889
+
+
+# ĐỊNH NGHĨA CÁC LUỒNG (Paths)
+
+paths:
+  # Tên luồng : 'main' - client sẽ gọi đến tên này
+  cam1:
+    source: rtsp://admin:passwd@ip:port/live
+    # Giao thức kéo từ camera: dùng TCP để tránh rớt kết nối
+    rtspTransport: tcp
+    # Luôn duy trì kết nối, không bật chế độ on-demand
+    sourceOnDemand: no
+  
+  
+  # cam2:
+  #   source: rtsp://admin:password@172.16.20.14:554/stream
+  #   rtspTransport: tcp
+  #   sourceOnDemand: no
+
+
+  # cam3:
+  #   source: rtsp://admin:password@172.16.20.15:554/stream
+  #   rtspTransport: tcp
+  #   sourceOnDemand: no
+
+
+  # cam4:
+  #   source: rtsp://admin:password@172.16.20.16:8554/stream
+  #   rtspTransport: tcp
+  #   sourceOnDemand: no
